@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*********************************************************************
+* Copyright (c) 2025 Contributors to the Eclipse Foundation.
+*
+* This program and the accompanying materials are made
+* available under the terms of the Eclipse Public License 2.0
+* which is available at https://www.eclipse.org/legal/epl-2.0/
+*
+* SPDX-License-Identifier: EPL-2.0
+**********************************************************************/
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.eclipse.osgi-technology.incubator</groupId>
+  <artifactId>reactor</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>Reactor for new things to incubate</name>
+  <url>https://github.com/eclipse-osgi-technology/inucubator</url>
+
+  <modules>
+    <module>command</module>
+    <module>terminal</module>
+    <!--    <module>scheduler</module>-->
+  </modules>
+
+  <!-- can be removed when parent is deployed ad non snapshot.-->
+  <repositories>
+    <repository>
+      <id>ossrh</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>apache-snapshots</id>
+      <name>Apache Snapshots</name>
+      <url>https://repository.apache.org/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <developers>
+    <developer>
+      <id>ideas-into-software</id>
+      <name>Michael H. Siemaszko</name>
+      <email>mhs@into.software</email>
+    </developer>
+    <developer>
+      <id>timothyjward</id>
+      <name>Tim Ward</name>
+      <email>timothyjward@apache.org</email>
+    </developer>
+    <developer>
+      <id>StefanBischof</id>
+      <name>Stefan Bischof</name>
+      <email>stbischof@bipolis.org</email>
+    </developer>
+  </developers>
+
+
+  <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+
+    <!-- Forbid the OSGi framework API - required for most projects -->
+    <osgi.dependency.allowed>false</osgi.dependency.allowed>
+    <featurelauncher.dependency.allowed>${osgi.dependency.allowed}</featurelauncher.dependency.allowed>
+
+    <!-- dependency versions -->
+    <osgi.annotation.version>8.0.0</osgi.annotation.version>
+    <osgi.cm.version>1.6.1</osgi.cm.version>
+    <osgi.ds.version>1.5.1</osgi.ds.version>
+    <osgi.framework.version>1.8.0</osgi.framework.version>
+    <osgi.resource.version>1.0.1</osgi.resource.version>
+    <osgi.util.tracker.version>1.5.4</osgi.util.tracker.version>
+    <osgi.util.converter.version>1.0.9</osgi.util.converter.version>
+    <maven.version>4.0.0-beta-4</maven.version>
+    <maven.resolver.version>2.0.1</maven.resolver.version>
+    <slf4j.version>2.0.11</slf4j.version>
+
+    <!-- default OSGi implementations' versions' -->
+    <felix.framework.version>7.0.5</felix.framework.version>
+    <felix.configadmin.version>1.9.26</felix.configadmin.version>
+    <felix.scr.version>2.2.2</felix.scr.version>
+
+    <!-- test dependencies' versions' -->
+    <osgi.test.version>1.3.0</osgi.test.version>
+    <junit-jupiter.version>5.11.1</junit-jupiter.version>
+    <junit-platform.version>1.11.1</junit-platform.version>
+    <mockito.version>5.14.1</mockito.version>
+    <aries.spifly.dynamic.framework.extension.version>1.3.7</aries.spifly.dynamic.framework.extension.version>
+    <glassfish.jakarta.json.version>2.0.1</glassfish.jakarta.json.version>
+    <commons.logging.version>1.2</commons.logging.version>
+
+    <!-- plugin dependencies' versions -->
+    <maven.dependency.plugin.version>3.8.0</maven.dependency.plugin.version>
+    <maven.properties.plugin.version>1.2.1</maven.properties.plugin.version>
+    <maven.clean.plugin.version>3.4.0</maven.clean.plugin.version>
+    <maven.resources.plugin.version>3.3.1</maven.resources.plugin.version>
+    <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
+    <maven.surefire.plugin.version>3.3.0</maven.surefire.plugin.version>
+    <maven.jar.plugin.version>3.4.2</maven.jar.plugin.version>
+    <maven.install.plugin.version>3.1.2</maven.install.plugin.version>
+    <maven.deploy.plugin.version>3.1.2</maven.deploy.plugin.version>
+    <maven.site.plugin.version>3.12.1</maven.site.plugin.version>
+    <maven.project.info.reports.plugin.version>3.6.1</maven.project.info.reports.plugin.version>
+    <maven.shade.plugin.version>3.6.0</maven.shade.plugin.version>
+
+    <!-- Default properties for resolver setup in development -->
+    <save.test.bndrun.changes>true</save.test.bndrun.changes>
+    <verify.test.bndruns>false</verify.test.bndruns>
+
+    <!-- path to local M2 repository, also passed to integration tests via
+    System properties -->
+    <localRepositoryPath>${project.build.directory}/m2Repo</localRepositoryPath>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>osgi.annotation</artifactId>
+        <version>${osgi.annotation.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.framework</artifactId>
+        <version>${osgi.framework.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.util.tracker</artifactId>
+        <version>${osgi.util.tracker.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.resource</artifactId>
+        <version>${osgi.resource.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.cm</artifactId>
+        <version>${osgi.cm.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.component</artifactId>
+        <version>${osgi.ds.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.component.annotations</artifactId>
+        <version>${osgi.ds.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+
+      <!-- default OSGi framework -->
+      <dependency>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>org.apache.felix.framework</artifactId>
+        <version>${felix.framework.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+
+      <!-- Testing -->
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>${junit-jupiter.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.junit.platform</groupId>
+        <artifactId>junit-platform-commons</artifactId>
+        <version>${junit-platform.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-params</artifactId>
+        <version>${junit-jupiter.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.test.junit5</artifactId>
+        <version>${osgi.test.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.test.junit5.cm</artifactId>
+        <version>${osgi.test.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.test.common</artifactId>
+        <version>${osgi.test.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.test.assertj.framework</artifactId>
+        <version>${osgi.test.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>${junit-jupiter.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.junit.platform</groupId>
+        <artifactId>junit-platform-launcher</artifactId>
+        <version>${junit-platform.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-junit-jupiter</artifactId>
+        <version>${mockito.version}</version>
+        <scope>test</scope>
+      </dependency>
+
+      <!-- default OSGi implementation of 'ConfigurationAdmin' service -->
+      <dependency>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>org.apache.felix.configadmin</artifactId>
+        <version>${felix.configadmin.version}</version>
+        <scope>test</scope>
+      </dependency>
+
+      <!-- default OSGi implementation of 'Service Component Runtime' -->
+      <dependency>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>org.apache.felix.scr</artifactId>
+        <version>${felix.scr.version}</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>${commons.logging.version}</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <!-- Testing -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-commons</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.test.junit5</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.test.junit5.cm</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.test.common</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.test.assertj.framework</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-launcher</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>
