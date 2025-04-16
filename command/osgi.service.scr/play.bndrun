@@ -1,9 +1,9 @@
+
 -runrequires: \
-	bnd.identity;id='org.eclipse.osgi-technology.incubator.command.osgi.service.scr',\
-	bnd.identity;id='org.eclipse.osgi-technology.incubator.command.osgi.service.scr-tests',\
+	bnd.identity;id='org.eclipse.osgi-technology.incubator.command.${project.artifactId}-tests',\
+	bnd.identity;id='org.eclipse.osgi-technology.incubator.command.${project.artifactId}',\
 	bnd.identity;id='org.eclipse.osgi-technology.incubator.console.plain',\
-	bnd.identity;id=junit-platform-engine,\
-	bnd.identity;id='org.apache.felix.scr'
+	bnd.identity;id=junit-platform-engine
 
 -runfw: org.apache.felix.framework
 -runbundles: \
@@ -14,9 +14,6 @@
 	org.opentest4j;version='[1.3.0,1.3.1)',\
 	org.eclipse.osgi-technology.incubator.console.plain;version='[0.0.1,0.0.2)',\
 	junit-platform-engine;version='[1.11.1,1.11.2)',\
-	org.apache.felix.scr;version='[2.2.2,2.2.3)',\
-	org.osgi.service.component;version='[1.5.1,1.5.2)',\
-	org.osgi.util.function;version='[1.2.0,1.2.1)',\
-	org.osgi.util.promise;version='[1.3.0,1.3.1)',\
 	org.eclipse.osgi-technology.incubator.command.osgi.service.scr;version='[0.0.1,0.0.2)',\
 	org.eclipse.osgi-technology.incubator.command.osgi.service.scr-tests;version='[0.0.1,0.0.2)'
+-runee: JavaSE-17

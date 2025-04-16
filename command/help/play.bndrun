@@ -1,6 +1,7 @@
+
 -runrequires: \
-	bnd.identity;id='org.eclipse.osgi-technology.incubator.command.help',\
-	bnd.identity;id='org.eclipse.osgi-technology.incubator.command.help-tests',\
+	bnd.identity;id='org.eclipse.osgi-technology.incubator.command.${project.artifactId}-tests',\
+	bnd.identity;id='org.eclipse.osgi-technology.incubator.command.${project.artifactId}',\
 	bnd.identity;id='org.eclipse.osgi-technology.incubator.console.plain',\
 	bnd.identity;id=junit-platform-engine
 

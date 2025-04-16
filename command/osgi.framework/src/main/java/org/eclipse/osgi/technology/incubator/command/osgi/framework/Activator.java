@@ -21,6 +21,12 @@ import org.eclipse.osgi.technology.incubator.command.util.dtoformatter.DTOFormat
 import org.osgi.annotation.bundle.Header;
 import org.osgi.framework.Constants;
 
+@org.osgi.annotation.bundle.Requirement(
+        effective = "active",
+        namespace = "osgi.commands",
+        name = "converter.bundle",
+        version = "1.0.0"
+    )
 @Header(name = Constants.BUNDLE_ACTIVATOR, value = "${@class}")
 @org.osgi.annotation.bundle.Capability(namespace = "org.apache.felix.gogo", name = "command.implementation", version = "1.0.0")
 @org.osgi.annotation.bundle.Requirement(effective = "active", namespace = "org.apache.felix.gogo", name = "runtime.implementation", version = "1.0.0")

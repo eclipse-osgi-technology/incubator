@@ -1,8 +1,9 @@
+
 -runrequires: \
-	bnd.identity;id='org.eclipse.osgi-technology.incubator.command.osgi.service.jaxrs',\
-	bnd.identity;id='org.eclipse.osgi-technology.incubator.command.osgi.service.jaxrs-tests',\
+	bnd.identity;id='org.eclipse.osgi-technology.incubator.command.${project.artifactId}-tests',\
+	bnd.identity;id='org.eclipse.osgi-technology.incubator.command.${project.artifactId}',\
 	bnd.identity;id='org.eclipse.osgi-technology.incubator.console.plain',\
-	bnd.identity;id='org.apache.aries.jax.rs.whiteboard'
+	bnd.identity;id=junit-platform-engine
 
 -runfw: org.apache.felix.framework
 -runbundles: \
@@ -11,34 +12,8 @@
 	org.apache.felix.gogo.runtime;version='[1.1.6,1.1.7)',\
 	org.eclipse.osgi-technology.incubator.command.util;version='[0.0.1,0.0.2)',\
 	org.opentest4j;version='[1.3.0,1.3.1)',\
-	org.apache.aries.spifly.dynamic.framework.extension;version='[1.3.7,1.3.8)',\
-	org.apache.felix.http.jetty;version='[5.1.32,5.1.33)',\
-	org.apache.felix.http.servlet-api;version='[3.0.0,3.0.1)',\
-	slf4j.api;version='[2.0.11,2.0.12)',\
-	slf4j.simple;version='[2.0.11,2.0.12)',\
 	org.eclipse.osgi-technology.incubator.console.plain;version='[0.0.1,0.0.2)',\
-	com.fasterxml.woodstox.woodstox-core;version='[6.4.0,6.4.1)',\
-	com.sun.xml.bind.jaxb-osgi;version='[2.3.3,2.3.4)',\
-	jakarta.activation-api;version='[1.2.2,1.2.3)',\
-	jakarta.annotation-api;version='[1.3.5,1.3.6)',\
-	jakarta.xml.bind-api;version='[2.3.3,2.3.4)',\
-	jakarta.xml.soap-api;version='[1.4.2,1.4.3)',\
-	jakarta.xml.ws-api;version='[2.3.3,2.3.4)',\
-	org.apache.aries.component-dsl.component-dsl;version='[1.2.2,1.2.3)',\
-	org.apache.aries.jax.rs.whiteboard;version='[2.0.2,2.0.3)',\
-	org.apache.cxf.cxf-core;version='[3.5.5,3.5.6)',\
-	org.apache.cxf.cxf-rt-frontend-jaxrs;version='[3.5.5,3.5.6)',\
-	org.apache.cxf.cxf-rt-rs-client;version='[3.5.5,3.5.6)',\
-	org.apache.cxf.cxf-rt-rs-sse;version='[3.5.5,3.5.6)',\
-	org.apache.cxf.cxf-rt-security;version='[3.5.5,3.5.6)',\
-	org.apache.cxf.cxf-rt-transports-http;version='[3.5.5,3.5.6)',\
-	org.apache.felix.configadmin;version='[1.9.26,1.9.27)',\
-	org.apache.ws.xmlschema.core;version='[2.3.0,2.3.1)',\
-	org.glassfish.jaxb.runtime;version='[2.3.5,2.3.6)',\
-	org.osgi.service.jaxrs;version='[1.0.0,1.0.1)',\
-	org.osgi.util.function;version='[1.2.0,1.2.1)',\
-	org.osgi.util.promise;version='[1.3.0,1.3.1)',\
-	stax2-api;version='[4.2.1,4.2.2)',\
+	junit-platform-engine;version='[1.11.1,1.11.2)',\
 	org.eclipse.osgi-technology.incubator.command.osgi.service.jaxrs;version='[0.0.1,0.0.2)',\
-	org.eclipse.osgi-technology.incubator.command.osgi.service.jaxrs-tests;version='[0.0.1,0.0.2)',\
-	org.apache.aries.javax.jax.rs-api;version='[1.0.4,1.0.5)'
+	org.eclipse.osgi-technology.incubator.command.osgi.service.jaxrs-tests;version='[0.0.1,0.0.2)'
+-runee: JavaSE-17

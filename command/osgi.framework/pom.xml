@@ -76,7 +76,12 @@
       <version>5.12.1</version>
       <scope>test</scope>
     </dependency>
-
+    <dependency>
+      <groupId>org.eclipse.osgi-technology.incubator.command</groupId>
+      <artifactId>converter.bundle</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>

@@ -22,6 +22,12 @@ import org.eclipse.osgi.technology.incubator.command.util.GlobFilter;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
+
+@org.osgi.annotation.bundle.Capability(
+    namespace = "osgi.commands",
+    name = "converter.bundle",
+    version = "1.0.0"
+)
 public class BundleConverter implements Converter {
 
     private BundleContext context;
