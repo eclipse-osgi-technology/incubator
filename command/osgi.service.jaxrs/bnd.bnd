@@ -1,4 +1,0 @@
-Import-Package: \
-  org.osgi.service.jaxrs.runtime;'resolution:'=optional,\
-  org.osgi.service.jaxrs.runtime.dto;'resolution:'=optional,\
-  *

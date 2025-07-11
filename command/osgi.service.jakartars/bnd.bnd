@@ -1,4 +1,0 @@
-Import-Package: \
-  org.osgi.service.jakartars.runtime;'resolution:'=optional,\
-  org.osgi.service.jakartars.runtime.dto;'resolution:'=optional,\
-  *

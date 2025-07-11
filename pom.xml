@@ -31,17 +31,15 @@
   <url>https://github.com/eclipse-osgi-technology/inucubator</url>
 
   <modules>
-    <module>command</module>
-    <module>console</module>
-    <module>scheduler</module>
+
   </modules>
 
   <!-- can be removed when parent is deployed ad non snapshot.-->
   <repositories>
     <repository>
-      <id>ossrh</id>
-      <name>Sonatype Nexus Snapshots</name>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <id>central-snapshots</id>
+      <name>Central Snapshot</name>
+      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
       <releases>
         <enabled>false</enabled>
       </releases>

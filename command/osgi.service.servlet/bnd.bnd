@@ -1,4 +1,0 @@
-Import-Package: \
-  org.osgi.service.servlet.runtime;'resolution:'=optional,\
-  org.osgi.service.servlet.runtime.dto;'resolution:'=optional,\
-  *
